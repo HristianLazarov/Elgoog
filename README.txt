@@ -1,4 +1,4 @@
-ELGOOG SEARCH
+ELGOOG
 
 A Google-inspired search engine with a deliberately backwards ranking algorithm.
 Search results are real Wikipedia pages.
@@ -13,7 +13,6 @@ RUN IT
 5. Open this address in your browser:
        http://127.0.0.1:5000
 
-HOW THE JOKE WORKS
 The app asks Wikipedia for real search results, calculates a basic word-match
 score, then sorts from the LOWEST match score to the HIGHEST. In other words,
 the pages that match your search least are shown first.
