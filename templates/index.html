@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elgoog</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="home-page">
+    <main class="home-main">
+        <a class="logo logo-large" href="/">
+            <span class="blue">E</span><span class="red">l</span><span class="yellow">g</span><span class="blue">o</span><span class="green">o</span><span class="red">g</span>
+        </a>
+        <p class="tagline">Find what you're not looking for.</p>
+
+        <form class="search-form home-search" action="/search" method="get">
+            <div class="search-box">
+                <span class="search-icon" aria-hidden="true">⌕</span>
+                <input type="text" name="q" aria-label="Search" autocomplete="off" autofocus>
+                <button class="clear-search" type="reset" aria-label="Clear search">×</button>
+            </div>
+        </form>
+    </main>
+</body>
+</html>

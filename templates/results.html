@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ query }} - Elgoog Search</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="results-page">
+    <header class="results-header">
+        <a class="logo logo-small" href="/">
+            <span class="blue">E</span><span class="red">l</span><span class="yellow">g</span><span class="blue">o</span><span class="green">o</span><span class="red">g</span>
+        </a>
+        <form class="search-form results-search" action="/search" method="get">
+            <div class="search-box">
+                <input type="text" name="q" value="{{ query }}" aria-label="Search">
+                <button class="submit-search" type="submit" aria-label="Search">⌕</button>
+            </div>
+        </form>
+    </header>
+
+    <nav class="tabs">
+        <a class="active" href="#">All</a>
+    </nav>
+
+    <main class="results-content">
+        <p class="result-stats">
+            {% if results %}
+                About {{ results|length }} results ({{ elapsed }} seconds)
+            {% else %}
+                Search results
+            {% endif %}
+        </p>
+
+        {% if error %}
+            <p class="error-message">{{ error }}</p>
+        {% elif results %}
+            {% for result in results %}
+                <article class="result">
+                    <div class="result-url">en.wikipedia.org › wiki › {{ result.title|replace(" ", "_") }}</div>
+                    <a class="result-title" href="{{ result.url }}" target="_blank" rel="noopener">{{ result.title }}</a>
+                    {% if result.description %}
+                        <p class="result-description">{{ result.description }}</p>
+                    {% endif %}
+                    {% if result.excerpt %}
+                        <p class="result-excerpt">{{ result.excerpt|striptags }}</p>
+                    {% endif %}
+                </article>
+            {% endfor %}
+        {% else %}
+            <p>No results found. Try another search.</p>
+        {% endif %}
+    </main>
+</body>
+</html>
